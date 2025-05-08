@@ -1,2 +1,2 @@
 # Assignment-01
-hello
+# 1. What are some differences between interfaces and types in TypeScript?
