@@ -1,10 +1,8 @@
-# Assignment-01
+# Interview Questions
 
 ## 1. What are some differences between Interfaces and Types in TypeScript?
 
 In TypeScript, both `interface` and `type` are used to define custom types. Although they often serve similar purposes, But they have some key differences.
-
----
 
 ### Interfaces
 
@@ -36,8 +34,6 @@ interface Employee extends Person {
   role: string;
 }
 ```
-
----
 
 ### Types
 
@@ -105,7 +101,58 @@ const person = {
   age: 25,
 };
 
-const name = getValue(person, "name"); // Output: "Sabbir"
-const age = getValue(person, "age");   // Output: 25
-cosnt email = getValue(person, "email");   // Error: "email" is not a key of Person
+const name = getValue(person, "name");    // Output: "Sabbir"
+const age = getValue(person, "age");      // Output: 25
+cosnt email = getValue(person, "email");  // Error: "email" is not a key of Person
+```
+
+---
+
+## 3. Explain the difference between any, unknown, and never types in TypeScript.
+
+In Typescript `any`, `unknown` and `never` all are special types. They have some key differences.
+
+### Any
+
+1. We can assign any value to an any type, it can hold any value like `string`, `number`, `object` and so on.
+
+```ts
+let value: any;
+value = 'sabbir';      // No Error
+value = 25;            // No Error
+value = {              // No Error
+    name: 'sabbir',
+    age: 25
+}
+value.toUpperCase();   // No Error
+```
+
+### Unknown
+
+1. We can also assign any value to an unknown type.
+2. But it is safer than any type because we can't use it directly without checking it's type.
+
+```ts
+let value: unknown;
+value = "hello";       // No Error
+value = 42;            // No Error
+value.toUpperCase();   // Error: Object is of type 'unknown'
+
+if (typeof value === "string") {
+  console.log(value.toUpperCase());   // Safe
+}
+```
+
+### Never
+
+1. Never type indicates the value that will never occur. It is used when we are sure that something will never occur.
+2. We can't assing any value.
+
+```ts
+const value : never = 'sabbir'   // Type "sabbir" is not assignable to type 'never'.ts(2322)
+
+// We can use never for throwing error
+function fail(msg: string): never {
+  throw new Error(msg);
+}
 ```
